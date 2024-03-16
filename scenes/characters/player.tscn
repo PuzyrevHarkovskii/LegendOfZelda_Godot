@@ -1,11 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmdcmj30f6rx5"]
+[gd_scene load_steps=6 format=3 uid="uid://bmdcmj30f6rx5"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_l8pc0"]
-[ext_resource type="Texture2D" uid="uid://bmy3oaapk4enn" path="res://icon.svg" id="1_qolrb"]
+[ext_resource type="Texture2D" uid="uid://cm42g1a7np3vs" path="res://art/SpriteSheet.png" id="2_cqqr8"]
+
+[sub_resource type="Animation" id="Animation_yuss0"]
+resource_name = "walkDown"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_u8jtr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmkug"]
+_data = {
+"RESET": SubResource("Animation_u8jtr"),
+"walkDown": SubResource("Animation_yuss0")
+}
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_l8pc0")
 speed = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qolrb")
+texture = ExtResource("2_cqqr8")
+hframes = 4
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vmkug")
+}
