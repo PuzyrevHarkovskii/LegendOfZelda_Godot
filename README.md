@@ -21,6 +21,9 @@
 - Add your own RegEx patterns
 - Set colours to your liking
 
+#todo - lol
+
+
 ## Installation
 
 ### Method 1 (Godot Asset Library)
