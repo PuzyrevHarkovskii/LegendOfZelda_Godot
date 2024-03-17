@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+# todo - нарисовать персонажа получше
 @export var speed: int = 35
 @onready var animations = $AnimationPlayer
 
