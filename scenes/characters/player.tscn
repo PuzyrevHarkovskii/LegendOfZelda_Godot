@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmdcmj30f6rx5"]
+[gd_scene load_steps=7 format=3 uid="uid://bmdcmj30f6rx5"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_l8pc0"]
 [ext_resource type="Texture2D" uid="uid://cm42g1a7np3vs" path="res://art/SpriteSheet.png" id="2_cqqr8"]
@@ -42,12 +42,17 @@ _data = {
 "walkDown": SubResource("Animation_yuss0")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o10n2"]
+size = Vector2(12, 4)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_l8pc0")
 speed = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_cqqr8")
+offset = Vector2(2.08165e-12, -8)
 hframes = 4
 vframes = 7
 
@@ -55,3 +60,7 @@ vframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_vmkug")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_o10n2")
